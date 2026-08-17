@@ -16,8 +16,9 @@ let
       "hosts/darwin-${name}"
     ];
 
-    # Home Manager is intentionally disabled for the first deployment.
-    home-modules = [ ];
+    home-modules = map mylib.relativeToRoot [
+      "home/hosts/darwin/darwin-${name}.nix"
+    ];
   };
 
   systemArgs = modules // args;

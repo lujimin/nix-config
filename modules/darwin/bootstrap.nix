@@ -26,5 +26,10 @@
     nushell
   ];
 
-  programs.zsh.enable = true;
+  programs = {
+    # Keep zsh available as the macOS fallback shell and configure Fish because
+    # it is this user's current login shell.
+    zsh.enable = true;
+    fish.enable = true;
+  };
 }

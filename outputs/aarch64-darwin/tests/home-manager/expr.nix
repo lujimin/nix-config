@@ -5,8 +5,7 @@
 }:
 let
   username = myvars.username;
-  # Home Manager is intentionally disabled for the bootstrap host.
-  hosts = [ ];
+  hosts = [ "MacBook-Pro-16" ];
 in
 lib.genAttrs hosts (
   name: outputs.darwinConfigurations.${name}.config.home-manager.users.${username}.home.homeDirectory
