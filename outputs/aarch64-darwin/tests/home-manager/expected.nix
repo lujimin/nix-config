@@ -4,9 +4,7 @@
 }:
 let
   username = myvars.username;
-  hosts = [
-    "fern"
-    "frieren"
-  ];
+  # Home Manager is intentionally disabled for the bootstrap host.
+  hosts = [ ];
 in
 lib.genAttrs hosts (_: "/Users/${username}")

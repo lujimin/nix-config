@@ -502,40 +502,6 @@
         "type": "github"
       }
     },
-    "my-asahi-firmware": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1752336609,
-        "narHash": "sha256-PeJXDQgKwmu6PEjEA+68I7nIOTTpwUUyO1b5PpQg4gc=",
-        "ref": "refs/heads/main",
-        "rev": "981583c8e101967ef6a66388ade54cab751f3a02",
-        "shallow": true,
-        "type": "git",
-        "url": "ssh://git@github.com/ryan4yin/asahi-firmware.git"
-      },
-      "original": {
-        "shallow": true,
-        "type": "git",
-        "url": "ssh://git@github.com/ryan4yin/asahi-firmware.git"
-      }
-    },
-    "mysecrets": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1781242064,
-        "narHash": "sha256-Bn9mOj7CkdnepiwkiGiHPpvZs0HYrQsjB4Z+EJE+v+s=",
-        "ref": "refs/heads/main",
-        "rev": "490e3aca901fa703083822ee64a65f0a1f4529af",
-        "shallow": true,
-        "type": "git",
-        "url": "ssh://git@github.com/ryan4yin/nix-secrets.git"
-      },
-      "original": {
-        "shallow": true,
-        "type": "git",
-        "url": "ssh://git@github.com/ryan4yin/nix-secrets.git"
-      }
-    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -892,8 +858,6 @@
         "home-manager": "home-manager_2",
         "lanzaboote": "lanzaboote",
         "llm-agents": "llm-agents",
-        "my-asahi-firmware": "my-asahi-firmware",
-        "mysecrets": "mysecrets",
         "nix-darwin": "nix-darwin",
         "nix-gaming": "nix-gaming",
         "nixos-apple-silicon": "nixos-apple-silicon",
