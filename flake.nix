@@ -1,5 +1,5 @@
 {
-  description = "Ryan Yin's nix configuration for both NixOS & macOS";
+  description = "TimeCaps's nix configuration for both NixOS & macOS";
 
   ##################################################################################################################
   #
@@ -148,15 +148,6 @@
 
     # my private secrets, it's a private repository, you need to replace it with your own.
     # use ssh protocol to authenticate via ssh-agent/ssh-key, and shallow clone to save time
-    mysecrets = {
-      url = "git+ssh://git@github.com/ryan4yin/nix-secrets.git?shallow=1";
-      flake = false;
-    };
-
-    my-asahi-firmware = {
-      url = "git+ssh://git@github.com/ryan4yin/asahi-firmware.git?shallow=1";
-      flake = false;
-    };
 
     # my wallpapers
     wallpapers = {
