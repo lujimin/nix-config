@@ -21,6 +21,13 @@
   # Register the stable system-profile path as a valid macOS login shell.
   environment.shells = [ pkgs.fish ];
 
+  # Keep the existing Apple Silicon Homebrew installation available before
+  # user shell configuration is evaluated.
+  environment.systemPath = [
+    "/opt/homebrew/bin"
+    "/opt/homebrew/sbin"
+  ];
+
   # nix-darwin intentionally does not manage properties of an existing admin
   # account.  Keep only the login shell in sync without taking ownership of or
   # recreating the macOS user.
