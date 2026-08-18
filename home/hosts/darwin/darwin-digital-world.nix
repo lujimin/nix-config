@@ -1,7 +1,11 @@
 {
+  config,
   mylib,
   ...
 }:
+let
+  homeDirectory = config.home.homeDirectory;
+in
 {
   # Import the upstream Darwin Home Manager profile as the source of truth.
   imports = [ (mylib.relativeToRoot "home/darwin") ];
@@ -10,7 +14,6 @@
   # data, may replace existing dotfiles, or install a large desktop profile.
   # Remove one entry at a time to enable and test it.
   disabledModules = map mylib.relativeToRoot [
-    "home/base/core/editors" # Neovim and Helix configuration
     "home/base/core/npm.nix" # Existing ~/.npmrc may conflict
     "home/base/core/pip.nix" # Changes Python package indexes
     "home/base/core/shells" # Bash and Nushell configuration
@@ -24,9 +27,25 @@
     "home/darwin/terminal.nix" # Terminal-specific font overrides
   ];
 
+  # Fish equivalent of the reusable user paths from home/base/core/shells.
+  # Keep the upstream Bash/Nushell module disabled until those shells are wanted.
+  home.sessionPath = [
+    "${homeDirectory}/.local/bin"
+    "${homeDirectory}/go/bin"
+    "${homeDirectory}/.cargo/bin"
+    "${homeDirectory}/.npm/bin"
+  ];
+
   programs = {
     home-manager.enable = true;
-    fish.enable = true;
+    fish = {
+      enable = true;
+      shellAliases = {
+        k = "kubectl";
+        urldecode = "python3 -c 'import sys, urllib.parse as ul; print(ul.unquote_plus(sys.stdin.read()))'";
+        urlencode = "python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";
+      };
+    };
 
     # The upstream profile primarily targets Bash, Zsh, and Nushell. Keep its
     # core tools integrated with this host's Fish login shell.
