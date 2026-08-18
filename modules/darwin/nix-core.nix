@@ -26,7 +26,8 @@
 
   system.stateVersion = 5;
 
-  nix.extraOptions = ''
-    !include ${config.age.secrets.nix-access-tokens.path}
-  '';
+  # Disabled until this fork has its own agenix-managed access token file.
+  # nix.extraOptions = ''
+  #   !include ${config.age.secrets.nix-access-tokens.path}
+  # '';
 }

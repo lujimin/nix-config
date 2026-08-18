@@ -1,9 +1,4 @@
-{
-  lib,
-  outputs,
-}:
-let
-  hostsNames = builtins.attrNames outputs.darwinConfigurations;
-  expected = lib.genAttrs hostsNames (name: name);
-in
-expected
+_: {
+  MacBook-Pro-16 = "digital-world";
+  digital-world = "digital-world";
+}

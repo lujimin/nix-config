@@ -8,7 +8,7 @@ let
 
   # Keep upstream host definitions in their original paths so future merges
   # remain straightforward, but only expose hosts managed by this fork.
-  enabledHosts = [ "MacBook-Pro-16" ];
+  enabledHosts = [ "digital-world" ];
   allData = haumea.lib.load {
     src = ./src;
     inputs = args;
