@@ -12,7 +12,7 @@ let
 
   modules = {
     darwin-modules = map mylib.relativeToRoot [
-      "modules/darwin/bootstrap.nix"
+      "local/darwin/core.nix"
       "hosts/darwin-${name}"
     ];
 

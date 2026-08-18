@@ -6,11 +6,15 @@
 let
   inherit (inputs) haumea;
 
-  # Contains all the flake outputs of this system architecture.
-  data = haumea.lib.load {
+  # Keep upstream host definitions in their original paths so future merges
+  # remain straightforward, but only expose hosts managed by this fork.
+  enabledHosts = [ "MacBook-Pro-16" ];
+  allData = haumea.lib.load {
     src = ./src;
     inputs = args;
   };
+  data = lib.getAttrs enabledHosts allData;
+
   # nix file names is redundant, so we remove it.
   dataWithoutPaths = builtins.attrValues data;
 

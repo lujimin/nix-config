@@ -41,8 +41,7 @@
     fi
   '';
 
-  # Keep the first generation small while providing the tools used by this
-  # repository's normal deployment workflow.
+  # Provide the tools used by this repository's normal deployment workflow.
   environment.systemPackages = with pkgs; [
     git
     just
