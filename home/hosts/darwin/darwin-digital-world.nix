@@ -11,7 +11,6 @@
   # Remove one entry at a time to enable and test it.
   disabledModules = map mylib.relativeToRoot [
     "home/base/core/editors" # Neovim and Helix configuration
-    "home/base/core/git.nix" # Git identity and Ryan-specific URL rewrite
     "home/base/core/npm.nix" # Existing ~/.npmrc may conflict
     "home/base/core/pip.nix" # Changes Python package indexes
     "home/base/core/shells" # Bash and Nushell configuration
@@ -37,5 +36,16 @@
     starship.enableFishIntegration = true;
     yazi.enableFishIntegration = true;
     zoxide.enableFishIntegration = true;
+
+    # Preserve the credential-manager settings from this Mac's previous
+    # ~/.gitconfig while the shared Git module manages the rest.
+    git.settings.credential = {
+      helper = [
+        ""
+        "/usr/local/share/gcm-core/git-credential-manager"
+      ];
+      "https://codeup.aliyun.com".provider = "generic";
+      "https://dev.azure.com".useHttpPath = true;
+    };
   };
 }

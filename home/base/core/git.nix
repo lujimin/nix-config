@@ -10,8 +10,17 @@
   # to make git use this config file, `~/.gitconfig` should not exist!
   #
   #    https://git-scm.com/docs/git-config#Documentation/git-config.txt---global
-  home.activation.removeExistingGitconfig = lib.hm.dag.entryBefore [ "checkLinkTargets" ] ''
-    rm -f ${config.home.homeDirectory}/.gitconfig
+  home.activation.backupExistingGitconfig = lib.hm.dag.entryBefore [ "checkLinkTargets" ] ''
+    gitconfig=${lib.escapeShellArg "${config.home.homeDirectory}/.gitconfig"}
+    backup="$gitconfig.home-manager.backup"
+
+    if [[ -f "$gitconfig" && ! -L "$gitconfig" ]]; then
+      if [[ -e "$backup" ]]; then
+        echo "Cannot back up $gitconfig because $backup already exists." >&2
+        exit 1
+      fi
+      mv "$gitconfig" "$backup"
+    fi
   '';
 
   # GitHub CLI tool
@@ -28,18 +37,6 @@
     #   signByDefault = true;
     # };
 
-    includes = [
-      {
-        # use different email & name for work:
-        #
-        # [user]
-        #   email = "xxx@xxx.com"
-        #   name = "Ryan Yin"
-        path = "~/work/.gitconfig";
-        condition = "gitdir:~/work/";
-      }
-    ];
-
     settings = {
       user.email = myvars.useremail;
       user.name = myvars.userfullname;
@@ -49,16 +46,6 @@
       push.autoSetupRemote = true;
       pull.rebase = true;
       log.date = "iso"; # use iso format for date
-
-      # replace https with ssh
-      url = {
-        "ssh://git@github.com/ryan4yin" = {
-          insteadOf = "https://github.com/ryan4yin";
-        };
-        # "ssh://git@bitbucket.com/ryan4yin" = {
-        #   insteadOf = "https://bitbucket.com/ryan4yin";
-        # };
-      };
 
       alias = {
         # common aliases
