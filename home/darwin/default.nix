@@ -1,16 +1,14 @@
 {
-  lib,
   mylib,
   myvars,
-  pkgs,
   ...
 }:
 {
   home.homeDirectory = "/Users/${myvars.username}";
 
-  # home-manager's darwin module only forwards the system-level nix.package
-  # when `nix.enable` is on, so provide a low-priority fallback here.
-  nix.package = lib.mkDefault pkgs.nix;
+  # Determinate Nix owns the installation and its nix.conf on macOS.
+  # Keep Home Manager from installing a second, upstream Nix implementation.
+  nix.enable = false;
   imports = (mylib.scanPaths ./.) ++ [
     ../base/core
     ../base/tui

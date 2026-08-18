@@ -4,9 +4,6 @@
 }:
 let
   username = myvars.username;
-  hosts = [
-    "MacBook-Pro-16"
-    "digital-world"
-  ];
+  hosts = [ "digital-world" ];
 in
 lib.genAttrs hosts (_: "/Users/${username}")
