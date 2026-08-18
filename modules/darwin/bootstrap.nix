@@ -18,6 +18,22 @@
 
   users.users.${myvars.username}.home = "/Users/${myvars.username}";
 
+  # Register the stable system-profile path as a valid macOS login shell.
+  environment.shells = [ pkgs.fish ];
+
+  # nix-darwin intentionally does not manage properties of an existing admin
+  # account.  Keep only the login shell in sync without taking ownership of or
+  # recreating the macOS user.
+  system.activationScripts.postActivation.text = ''
+    desiredShell="/run/current-system/sw/bin/fish"
+    currentShell=$(/usr/bin/dscl . -read "/Users/${myvars.username}" UserShell | /usr/bin/awk '{ print $2 }')
+
+    if [ "$currentShell" != "$desiredShell" ]; then
+      echo "setting login shell for ${myvars.username} to $desiredShell..." >&2
+      /usr/bin/dscl . -create "/Users/${myvars.username}" UserShell "$desiredShell"
+    fi
+  '';
+
   # Keep the first generation small while providing the tools used by this
   # repository's normal deployment workflow.
   environment.systemPackages = with pkgs; [
