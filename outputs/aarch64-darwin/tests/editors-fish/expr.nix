@@ -30,6 +30,10 @@ in
     inherit (homeConfig.programs.zellij) enable;
     alias = homeConfig.programs.fish.shellAliases.zj;
     configManaged = homeConfig.xdg.configFile."zellij/config.kdl".source != null;
+    nushell = {
+      enable = homeConfig.programs.nushell.enable;
+      autoStart = lib.hasInfix "^zellij" homeConfig.programs.nushell.extraConfig;
+    };
   };
 
   packageManagers = {

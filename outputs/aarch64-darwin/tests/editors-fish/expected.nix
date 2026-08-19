@@ -25,6 +25,10 @@ in
     enable = true;
     alias = "zellij";
     configManaged = true;
+    nushell = {
+      enable = true;
+      autoStart = true;
+    };
   };
 
   packageManagers = {

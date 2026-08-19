@@ -41,6 +41,7 @@ in
 
   programs = {
     home-manager.enable = true;
+    nushell.enable = true;
     fish = {
       enable = true;
       interactiveShellInit = ''
