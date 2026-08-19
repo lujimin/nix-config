@@ -7,8 +7,14 @@ let
   homeDirectory = config.home.homeDirectory;
 in
 {
-  # Import the upstream Darwin Home Manager profile as the source of truth.
-  imports = [ (mylib.relativeToRoot "home/darwin") ];
+  # Import the upstream Darwin Home Manager profile as the source of truth,
+  # then selectively enable low-risk modules from the disabled TUI profile.
+  imports = map mylib.relativeToRoot [
+    "home/darwin"
+    "home/base/tui/editors"
+    "home/base/tui/encryption"
+    "home/base/tui/zellij"
+  ];
 
   # Start conservatively: these upstream modules either contain Ryan-specific
   # data, may replace existing dotfiles, or install a large desktop profile.

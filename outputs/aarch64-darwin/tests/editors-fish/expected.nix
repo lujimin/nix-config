@@ -7,6 +7,15 @@ in
     helix = true;
     nixvim = false;
     nixfmt = true;
+    tuiPackages = {
+      nixd = true;
+      taplo = true;
+      marksman = true;
+      python3 = true;
+      rustc = true;
+      go = true;
+      nodejs = true;
+    };
     EDITOR = "hx";
     SUDO_EDITOR = "nvim --clean";
     VISUAL = "hx";
@@ -15,6 +24,7 @@ in
   zellij = {
     enable = true;
     alias = "zellij";
+    configManaged = true;
   };
 
   packageManagers = {

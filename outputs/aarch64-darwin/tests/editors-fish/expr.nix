@@ -7,18 +7,29 @@
 let
   darwinConfig = outputs.darwinConfigurations.digital-world.config;
   homeConfig = darwinConfig.home-manager.users.${myvars.username};
+  homePackageNames = map lib.getName homeConfig.home.packages;
 in
 {
   editors = {
     helix = homeConfig.programs.helix.enable;
     nixvim = homeConfig.programs.nixvim.enable;
     nixfmt = lib.any (package: lib.getName package == "nixfmt") darwinConfig.environment.systemPackages;
+    tuiPackages = lib.genAttrs [
+      "nixd"
+      "taplo"
+      "marksman"
+      "python3"
+      "rustc"
+      "go"
+      "nodejs"
+    ] (package: lib.elem package homePackageNames);
     inherit (homeConfig.home.sessionVariables) EDITOR SUDO_EDITOR VISUAL;
   };
 
   zellij = {
     inherit (homeConfig.programs.zellij) enable;
     alias = homeConfig.programs.fish.shellAliases.zj;
+    configManaged = homeConfig.xdg.configFile."zellij/config.kdl".source != null;
   };
 
   packageManagers = {
