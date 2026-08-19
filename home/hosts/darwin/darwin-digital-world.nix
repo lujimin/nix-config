@@ -8,12 +8,14 @@ let
 in
 {
   # Import the upstream Darwin Home Manager profile as the source of truth,
-  # then selectively enable low-risk modules from the disabled TUI profile.
+  # then selectively enable modules from otherwise disabled aggregate profiles.
   imports = map mylib.relativeToRoot [
     "home/darwin"
+    "home/base/gui/terminal/kitty.nix"
     "home/base/tui/editors"
     "home/base/tui/encryption"
     "home/base/tui/zellij"
+    "home/hosts/darwin/digital-world-gui.nix"
   ];
 
   # Start conservatively: these upstream modules either contain Ryan-specific
@@ -22,7 +24,8 @@ in
   disabledModules = map mylib.relativeToRoot [
     "home/base/core/shells" # Bash and Nushell configuration
     "home/base/tui" # Private SSH, GPG, work, and development settings
-    "home/base/gui" # Large GUI and terminal profile
+    "home/base/gui/dev-tools.nix" # Replaced by a host-specific AI tool selection
+    "home/base/gui/terminal" # Enable only Kitty instead of every terminal
     "home/darwin/aerospace" # Out-of-store Aerospace configuration link
     "home/darwin/proxy" # Proxy tools and configuration
     "home/darwin/rime-squirrel.nix" # Force-replaces ~/Library/Rime

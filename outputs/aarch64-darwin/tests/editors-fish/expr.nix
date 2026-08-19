@@ -26,6 +26,36 @@ in
     inherit (homeConfig.home.sessionVariables) EDITOR SUDO_EDITOR VISUAL;
   };
 
+  gui = {
+    terminals = {
+      kitty = {
+        enable = homeConfig.programs.kitty.enable;
+        packageManaged = homeConfig.programs.kitty.package != null;
+      };
+      alacritty = homeConfig.programs.alacritty.enable;
+      ghostty = homeConfig.programs.ghostty.enable;
+      foot = homeConfig.programs.foot.enable;
+    };
+    zed = homeConfig.programs.zed-editor.enable;
+    mediaPackages = lib.genAttrs [
+      "ffmpeg-full"
+      "imagemagick"
+      "graphviz"
+      "viu"
+    ] (package: lib.elem package homePackageNames);
+    agentPackages = lib.genAttrs [
+      "codex"
+      "claude-code"
+      "opencode"
+      "herdr"
+    ] (package: lib.elem package homePackageNames);
+    excludedAgents = lib.genAttrs [
+      "cursor-cli"
+      "kimi-code"
+      "rtk"
+    ] (package: !(lib.elem package homePackageNames));
+  };
+
   zellij = {
     inherit (homeConfig.programs.zellij) enable;
     alias = homeConfig.programs.fish.shellAliases.zj;

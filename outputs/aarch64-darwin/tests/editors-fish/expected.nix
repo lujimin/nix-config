@@ -21,6 +21,36 @@ in
     VISUAL = "hx";
   };
 
+  gui = {
+    terminals = {
+      kitty = {
+        enable = true;
+        packageManaged = true;
+      };
+      alacritty = false;
+      ghostty = false;
+      foot = false;
+    };
+    zed = true;
+    mediaPackages = {
+      ffmpeg-full = true;
+      imagemagick = true;
+      graphviz = true;
+      viu = true;
+    };
+    agentPackages = {
+      codex = true;
+      claude-code = true;
+      opencode = true;
+      herdr = true;
+    };
+    excludedAgents = {
+      cursor-cli = true;
+      kimi-code = true;
+      rtk = true;
+    };
+  };
+
   zellij = {
     enable = true;
     alias = "zellij";
