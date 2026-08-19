@@ -10,13 +10,19 @@
   ...
 }:
 let
-  inherit (inputs) nixpkgs-darwin home-manager nix-darwin;
+  inherit (inputs)
+    determinate
+    home-manager
+    nix-darwin
+    nixpkgs-darwin
+    ;
 in
 nix-darwin.lib.darwinSystem {
   inherit system specialArgs;
   modules =
     darwin-modules
     ++ [
+      determinate.darwinModules.default
       (
         { lib, ... }:
         {

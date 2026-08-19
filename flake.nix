@@ -57,6 +57,10 @@
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
+    # Official compatibility and configuration module for Determinate Nix.
+    # Do not make its nixpkgs input follow ours: Determinate recommends keeping
+    # the pinned input so its published binaries remain cacheable.
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
 
     # home-manager, used for managing user configuration
     home-manager = {
