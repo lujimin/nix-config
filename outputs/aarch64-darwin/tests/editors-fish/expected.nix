@@ -64,6 +64,8 @@ in
     nushell = {
       enable = true;
       autoStart = true;
+      customCompletions = true;
+      unsafeWorkConfigCommented = true;
     };
   };
 

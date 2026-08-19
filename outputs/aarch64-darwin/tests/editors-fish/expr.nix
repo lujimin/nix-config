@@ -69,6 +69,22 @@ in
     nushell = {
       enable = homeConfig.programs.nushell.enable;
       autoStart = lib.hasInfix "^zellij" homeConfig.programs.nushell.extraConfig;
+      customCompletions =
+        lib.all (completion: lib.hasInfix completion homeConfig.programs.nushell.extraConfig)
+          [
+            "custom-completions/git/git-completions.nu"
+            "custom-completions/just/just-completions.nu"
+            "custom-completions/nix/nix-completions.nu"
+            "custom-completions/ssh/ssh-completions.nu"
+          ];
+      unsafeWorkConfigCommented =
+        lib.all (line: lib.hasInfix line homeConfig.programs.nushell.extraConfig)
+          [
+            "# source /etc/agenix/alias-for-work.nushell"
+            "# $env.ANTHROPIC_BASE_URL = $env.WORK_ANTHROPIC_BASE_URL"
+            "# $env.ANTHROPIC_AUTH_TOKEN = $env.WORK_ANTHROPIC_AUTH_TOKEN"
+            "# use modules/kubernetes *"
+          ];
     };
   };
 

@@ -14,6 +14,7 @@ in
     "home/base/gui/terminal/kitty.nix"
     "home/base/tui/editors"
     "home/base/tui/encryption"
+    "home/base/tui/shell"
     "home/base/tui/zellij"
     "home/hosts/darwin/digital-world-gui.nix"
   ];

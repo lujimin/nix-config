@@ -10,14 +10,16 @@
     # currently, nushell does not support conditional sourcing of files
     # https://github.com/nushell/nushell/issues/8214
     extraConfig = ''
-      source /etc/agenix/alias-for-work.nushell
+      # Disabled on digital-world until its private Agenix aliases are configured.
+      # source /etc/agenix/alias-for-work.nushell
 
       $env.CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC = "1"
       $env.CLAUDE_CODE_ATTRIBUTION_HEADER = "0"
 
-      # for work
-      $env.ANTHROPIC_BASE_URL = $env.WORK_ANTHROPIC_BASE_URL
-      $env.ANTHROPIC_AUTH_TOKEN = $env.WORK_ANTHROPIC_AUTH_TOKEN
+      # Disabled until WORK_ANTHROPIC_BASE_URL and WORK_ANTHROPIC_AUTH_TOKEN
+      # are supplied by this host's secret management.
+      # $env.ANTHROPIC_BASE_URL = $env.WORK_ANTHROPIC_BASE_URL
+      # $env.ANTHROPIC_AUTH_TOKEN = $env.WORK_ANTHROPIC_AUTH_TOKEN
 
       # Directories in this constant are searched by the
       # `use` and `source` commands.
@@ -45,11 +47,13 @@
       use ${./aliases/gcloud.nu} *
 
       # -*- modules -*-
+      # Disabled until kubectl and the Kubernetes profile are enabled. The lg
+      # dependency also conflicts with the existing LazyGit `lg` command.
       # argx & lg is required by the kubernetes module
-      use modules/argx *
-      use modules/lg *
-      # k8s/helm aliases, completions, 
-      use modules/kubernetes *
+      # use modules/argx *
+      # use modules/lg *
+      # k8s/helm aliases, completions,
+      # use modules/kubernetes *
       # a wrapper around the jc cli tool, convert cli outputs to nushell tables
       # use modules/jc
     '';
