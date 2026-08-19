@@ -1,4 +1,5 @@
 {
+  lib,
   myvars,
   outputs,
   ...
@@ -16,6 +17,12 @@ in
 
   fish = {
     inherit (homeConfig.programs.fish) enable;
+    homebrewCompletionsEnabled =
+      lib.all (path: lib.hasInfix path homeConfig.programs.fish.interactiveShellInit)
+        [
+          "/opt/homebrew/share/fish/completions"
+          "/opt/homebrew/share/fish/vendor_completions.d"
+        ];
     aliases = {
       inherit (homeConfig.programs.fish.shellAliases)
         k

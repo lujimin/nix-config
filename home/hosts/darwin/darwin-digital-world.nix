@@ -40,6 +40,17 @@ in
     home-manager.enable = true;
     fish = {
       enable = true;
+      interactiveShellInit = ''
+        # Homebrew installs Fish completions outside Fish's default search path.
+        # Use fixed host paths so shell startup does not need to execute `brew --prefix`.
+        for completionDir in \
+          /opt/homebrew/share/fish/completions \
+          /opt/homebrew/share/fish/vendor_completions.d
+          if test -d $completionDir; and not contains -- $completionDir $fish_complete_path
+            set --prepend fish_complete_path $completionDir
+          end
+        end
+      '';
       shellAliases = {
         k = "kubectl";
         urldecode = "python3 -c 'import sys, urllib.parse as ul; print(ul.unquote_plus(sys.stdin.read()))'";
