@@ -60,7 +60,7 @@ in
 
     # The upstream profile primarily targets Bash, Zsh, and Nushell. Keep its
     # core tools integrated with this host's Fish login shell.
-    atuin.enableFishIntegration = true;
+    atuin.enableFishIntegration = false;
     eza.enableFishIntegration = true;
     fzf.enableFishIntegration = true;
     starship.enableFishIntegration = true;

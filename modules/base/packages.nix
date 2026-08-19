@@ -16,6 +16,7 @@
     neovim # backup editor; `nvim --clean` for sensitive / privileged edits (`$SUDO_EDITOR`)
     gnumake # Makefile
     just # a command runner like gnumake, but simpler
+    nixfmt # Nix code formatter used by `just fmt`
     git # used by nix flakes
     git-lfs # used by huggingface models
 

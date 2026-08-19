@@ -6,6 +6,7 @@ in
   editors = {
     helix = true;
     nixvim = false;
+    nixfmt = true;
     EDITOR = "hx";
     SUDO_EDITOR = "nvim --clean";
     VISUAL = "hx";
@@ -13,6 +14,7 @@ in
 
   fish = {
     enable = true;
+    atuinIntegration = false;
     homebrewCompletionsEnabled = true;
     aliases = {
       k = "kubectl";
