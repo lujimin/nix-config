@@ -12,6 +12,31 @@ in
     VISUAL = "hx";
   };
 
+  zellij = {
+    enable = true;
+    alias = "zellij";
+  };
+
+  packageManagers = {
+    npm = ''
+      prefix=/Users/${myvars.username}/.npm
+      min-release-age=2
+    '';
+    pnpm = ''
+      minimumReleaseAge: 2880
+    '';
+    pip = ''
+      [global]
+      index-url = https://mirrors.bfsu.edu.cn/pypi/web/simple
+
+      [install]
+      uploaded-prior-to = P2D
+    '';
+    uv = ''
+      exclude-newer = "2 days"
+    '';
+  };
+
   fish = {
     enable = true;
     atuinIntegration = false;

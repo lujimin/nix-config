@@ -14,10 +14,7 @@ in
   # data, may replace existing dotfiles, or install a large desktop profile.
   # Remove one entry at a time to enable and test it.
   disabledModules = map mylib.relativeToRoot [
-    "home/base/core/npm.nix" # Existing ~/.npmrc may conflict
-    "home/base/core/pip.nix" # Changes Python package indexes
     "home/base/core/shells" # Bash and Nushell configuration
-    "home/base/core/zellij" # Zellij configuration
     "home/base/tui" # Private SSH, GPG, work, and development settings
     "home/base/gui" # Large GUI and terminal profile
     "home/darwin/aerospace" # Out-of-store Aerospace configuration link
