@@ -10,6 +10,8 @@ let
   homePackageNames = map lib.getName homeConfig.home.packages;
 in
 {
+  homeStateVersion = homeConfig.home.stateVersion;
+
   editors = {
     helix = homeConfig.programs.helix.enable;
     nixvim = homeConfig.programs.nixvim.enable;
@@ -27,6 +29,10 @@ in
   };
 
   gui = {
+    appManagement = {
+      copyApps = homeConfig.targets.darwin.copyApps.enable;
+      linkApps = homeConfig.targets.darwin.linkApps.enable;
+    };
     terminals = {
       kitty = {
         enable = homeConfig.programs.kitty.enable;

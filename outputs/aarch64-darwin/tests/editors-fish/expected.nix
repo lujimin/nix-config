@@ -3,6 +3,8 @@ let
   homeDirectory = "/Users/${myvars.username}";
 in
 {
+  homeStateVersion = "26.05";
+
   editors = {
     helix = true;
     nixvim = false;
@@ -22,6 +24,10 @@ in
   };
 
   gui = {
+    appManagement = {
+      copyApps = true;
+      linkApps = false;
+    };
     terminals = {
       kitty = {
         enable = true;
