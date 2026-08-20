@@ -69,8 +69,13 @@ in
     # The upstream profile primarily targets Bash, Zsh, and Nushell. Keep its
     # core tools integrated with this host's Fish login shell.
     atuin.enableFishIntegration = false;
+    fzf = {
+      enableFishIntegration = true;
+      # Atuin owns Ctrl-R in Nushell; FZF remains available through its command
+      # and keeps its other shell bindings.
+      historyWidget.nushell.command = "";
+    };
     eza.enableFishIntegration = true;
-    fzf.enableFishIntegration = true;
     starship.enableFishIntegration = true;
     yazi.enableFishIntegration = true;
     zoxide.enableFishIntegration = true;

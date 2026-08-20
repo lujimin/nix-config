@@ -89,6 +89,17 @@ in
     '';
   };
 
+  warningFixes = {
+    catppuccinGemini = false;
+    manGenerateCaches = false;
+    homeManagerManual = false;
+    atuinNushellIntegration = true;
+    fzfNushellHistory = "";
+    darwinDocumentation = false;
+    darwinMan = true;
+    darwinInfo = true;
+  };
+
   fish = {
     enable = true;
     atuinIntegration = false;

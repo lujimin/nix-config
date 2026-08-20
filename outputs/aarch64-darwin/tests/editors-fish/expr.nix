@@ -95,6 +95,17 @@ in
     uv = homeConfig.xdg.configFile."uv/uv.toml".text;
   };
 
+  warningFixes = {
+    catppuccinGemini = homeConfig.catppuccin.gemini-cli.enable;
+    manGenerateCaches = homeConfig.programs.man.generateCaches;
+    homeManagerManual = homeConfig.manual.manpages.enable;
+    atuinNushellIntegration = homeConfig.programs.atuin.enableNushellIntegration;
+    fzfNushellHistory = homeConfig.programs.fzf.historyWidget.nushell.command;
+    darwinDocumentation = darwinConfig.documentation.enable;
+    darwinMan = darwinConfig.programs.man.enable;
+    darwinInfo = darwinConfig.programs.info.enable;
+  };
+
   fish = {
     inherit (homeConfig.programs.fish) enable;
     atuinIntegration = homeConfig.programs.atuin.enableFishIntegration;

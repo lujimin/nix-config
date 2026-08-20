@@ -51,6 +51,11 @@
     determinateNixd.garbageCollector.strategy = "disabled";
   };
 
+  # Avoid evaluating nix-darwin's generated options manual, which currently
+  # triggers a Nix store-context warning. The native man/info integrations
+  # remain enabled through programs.man and programs.info.
+  documentation.enable = false;
+
   system.stateVersion = 5;
 
   # Disabled until this fork has its own agenix-managed access token file.
