@@ -1,5 +1,6 @@
 {
   lib,
+  mylib,
   myvars,
   outputs,
   ...
@@ -61,6 +62,20 @@ in
       "rtk"
     ] (package: !(lib.elem package homePackageNames));
   };
+
+  aerospace =
+    let
+      configText = builtins.readFile (mylib.relativeToRoot "home/darwin/aerospace/aerospace.toml");
+      managedFile = homeConfig.home.file.".aerospace.toml";
+    in
+    {
+      installed = lib.elem "aerospace" homePackageNames;
+      bordersInstalled = lib.any (name: lib.toLower name == "jankyborders") homePackageNames;
+      upstreamConfigLinked = managedFile.source != null && managedFile.text == null;
+      startsAtLogin = lib.hasInfix "start-at-login = true" configText;
+      usesUpstreamBordersCommand = lib.hasInfix "exec-and-forget borders " configText;
+      preservesUpstreamFallback = lib.hasInfix "Make all windows float by default" configText;
+    };
 
   zellij = {
     inherit (homeConfig.programs.zellij) enable;

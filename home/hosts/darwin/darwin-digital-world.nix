@@ -27,7 +27,6 @@ in
     "home/base/tui" # Private SSH, GPG, work, and development settings
     "home/base/gui/dev-tools.nix" # Replaced by a host-specific AI tool selection
     "home/base/gui/terminal" # Enable only Kitty instead of every terminal
-    "home/darwin/aerospace" # Out-of-store Aerospace configuration link
     "home/darwin/proxy" # Proxy tools and configuration
     "home/darwin/rime-squirrel.nix" # Force-replaces ~/Library/Rime
     "home/darwin/shell.nix" # Zsh and Miniforge initialization

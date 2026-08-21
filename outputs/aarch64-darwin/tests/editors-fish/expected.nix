@@ -57,6 +57,15 @@ in
     };
   };
 
+  aerospace = {
+    installed = true;
+    bordersInstalled = true;
+    upstreamConfigLinked = true;
+    startsAtLogin = true;
+    usesUpstreamBordersCommand = true;
+    preservesUpstreamFallback = true;
+  };
+
   zellij = {
     enable = true;
     alias = "zellij";
