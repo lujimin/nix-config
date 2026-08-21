@@ -74,6 +74,7 @@ in
       upstreamConfigLinked = managedFile.source != null && managedFile.text == null;
       startsAtLogin = lib.hasInfix "start-at-login = true" configText;
       usesUpstreamBordersCommand = lib.hasInfix "exec-and-forget borders " configText;
+      execPathIncludesNixProfile = lib.hasInfix "/etc/profiles/per-user/\${USER}/bin" configText;
       preservesUpstreamFallback = lib.hasInfix "Make all windows float by default" configText;
     };
 

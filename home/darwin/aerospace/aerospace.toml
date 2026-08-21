@@ -198,7 +198,7 @@ esc = 'mode main'
 [exec]
 inherit-env-vars = true
 [exec.env-vars]
-PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
+PATH = '/etc/profiles/per-user/${USER}/bin:/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 
 # =================================================================
 #

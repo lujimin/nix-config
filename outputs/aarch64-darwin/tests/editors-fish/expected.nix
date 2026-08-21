@@ -63,6 +63,7 @@ in
     upstreamConfigLinked = true;
     startsAtLogin = true;
     usesUpstreamBordersCommand = true;
+    execPathIncludesNixProfile = true;
     preservesUpstreamFallback = true;
   };
 
